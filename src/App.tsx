@@ -1,13 +1,24 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
 import "./App.css";
-import { TodoList } from "./features/todoList/TodoList";
+import { Route, Routes } from "react-router-dom";
+import TodoList from "./features/todoList/TodoList";
+import AddTodo from "./features/addTodo/AddTodo";
+import SingleTodo from "./features/singleTodo/SingleTodo";
 
 function App() {
   return (
-    <div className="App">
-      <TodoList />
+    <div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <AddTodo />
+              <TodoList />
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }
