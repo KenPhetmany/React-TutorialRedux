@@ -1,12 +1,13 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../services/store";
+import { useParams } from "react-router-dom";
 
-const SingleTodo = ({ match }: { match: any }) => {
-  const { todoId } = match.params;
+const SingleTodo = () => {
+  const params = useParams();
 
   const todo = useSelector((state: RootState) =>
-    state.todos.find((todo) => todo.id === todoId)
+    state.todos.find((todo) => todo.id && params)
   );
   if (!todo) {
     return (
@@ -16,6 +17,9 @@ const SingleTodo = ({ match }: { match: any }) => {
     );
   }
 
+  const onClick = () => {
+    console.log(params);
+  };
   return (
     <section>
       <article className="post">
