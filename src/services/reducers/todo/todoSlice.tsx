@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = [
   { id: "1", title: "Test 1", description: "This is test 1" },
@@ -9,8 +9,13 @@ const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    todoAdded(state, action) {
-      state.push(action.payload);
+    todoAdded: {
+      reducer(state, action) {
+        state.push(action.payload);
+      },
+      prepare(payload) {
+        return payload;
+      },
     },
     todoUpdated(state, action) {
       const { id, title, description } = action.payload;
