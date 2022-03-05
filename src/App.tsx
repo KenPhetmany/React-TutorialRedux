@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import TodoList from "./features/todoList/TodoList";
 import AddTodo from "./features/addTodo/AddTodo";
 import SingleTodo from "./features/singleTodo/SingleTodo";

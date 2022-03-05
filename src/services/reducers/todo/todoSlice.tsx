@@ -1,8 +1,18 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = [
-  { id: "1", title: "Test 1", description: "This is test 1" },
-  { id: "2", title: "Test 2", description: "This is test 2" },
+  {
+    id: "1",
+    title: "Test 1",
+    description: "This is test 1",
+    userId: "Ken Phetmany",
+  },
+  {
+    id: "2",
+    title: "Test 2",
+    description: "This is test 2",
+    userId: "Ken Phetmany",
+  },
 ];
 
 const todoSlice = createSlice({
@@ -10,11 +20,18 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     todoAdded: {
-      reducer(state, action) {
+      reducer(state, action: PayloadAction<any>) {
         state.push(action.payload);
       },
-      prepare(payload) {
-        return payload;
+      prepare(title, description, userId) {
+        return {
+          payload: {
+            id: nanoid(),
+            title,
+            description,
+            user: userId,
+          },
+        };
       },
     },
     todoUpdated(state, action) {
