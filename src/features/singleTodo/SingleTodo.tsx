@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../services/store";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const SingleTodo = () => {
   const params = useParams();
@@ -25,6 +25,9 @@ const SingleTodo = () => {
       <article className="post">
         <h2>{todo.title}</h2>
         <p className="post-content">{todo.description}</p>
+        <Link to={`/editTodo/${todo.id}`} className="button">
+          Edit Todo
+        </Link>
       </article>
     </section>
   );
